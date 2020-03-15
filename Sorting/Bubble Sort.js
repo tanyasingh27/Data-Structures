@@ -1,8 +1,9 @@
 function BubbleSort(arr){
     let n = arr.length-1;
     while(n>=0){
-        for(let i=0; i<=n ; i++)
+        for(let i=0; i<n ; i++)
          {
+             console.log(arr[i], arr[i+1]);
             if(arr[i] > arr[i+1])
             {
               [arr[i], arr[i+1]] = [arr[i+1], arr[i]];
