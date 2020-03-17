@@ -1,18 +1,18 @@
 function BubbleSort(arr){
-    let swapped = true;
+    let isSwapped = true;
     let n = arr.length-1;
     do{
-        swapped = false;
+        isSwapped = false;
         for(let i=0; i<n ; i++)
         {             
            if(arr[i] > arr[i+1])
            {
              [arr[i], arr[i+1]] = [arr[i+1], arr[i]];
-             swapped = true;
+             isSwapped = true;
            }           
         }
        n--;
-    }while(swapped)
+    }while(isSwapped)
     return arr;
   }
   
