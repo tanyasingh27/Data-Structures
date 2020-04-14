@@ -76,7 +76,7 @@ class DoublyLinkedList {
     }
     
     get(index){
-        if (index < 0 || index >= this.length ) return undefined;
+        if (index < 0 || index >= this.length ) return null;
         let count ;
         let current ;
         if(index >= this.length/2){
@@ -122,6 +122,38 @@ class DoublyLinkedList {
         return true;
 
     }
+
+    remove(index){
+        if(index< 0 ||index >= this.length) return undefined;
+        if(index == this.length-1) return this.pop();
+        if(index === 0) return this.shift();
+        let removed = this.get(index);
+        let prevNode = removed.prev;
+        prevNode.next = removed.next;
+        prevNode.next.prev = prevNode;
+        removed.prev = null;
+        removed.next = null;
+        this.length--;
+        return removed;
+        
+    }
+
+    reverse(){
+        let current = this.head;
+        this.head = this.tail;
+        this.tail = current;
+        let next, prev = null;
+        for( let i=0; i< this.length; i++){
+            next = current.next;
+            current.next = prev;
+            current.prev = next;
+            prev = current;
+            current = next;
+        }
+        return this;
+        
+    }
+
     traverse(){
         let current = this.head;
         while(current){
@@ -136,6 +168,10 @@ DLL.push("Harry");
 DLL.push("Ron");
 DLL.push("Hermione");
 DLL.traverse();
-DLL.insert(",",1);
-console.log(DLL.insert(",",3));
+// DLL.insert(",",1);
+// console.log(DLL.insert(",",3));
+// DLL.traverse();
+// DLL.remove(3);
+// DLL.remove(1);
+DLL.reverse();
 DLL.traverse();
