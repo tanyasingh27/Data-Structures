@@ -38,6 +38,7 @@ class Stack {
     }
 }
 
+/******************* Test *******************/
 let stack = new Stack();
 console.log(stack.push("FIRST"));
 console.log(stack.push("SECOND"));
