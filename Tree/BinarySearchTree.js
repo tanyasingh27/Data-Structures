@@ -38,6 +38,23 @@ class BinarySearchTree{
         return this;
                
     }
+
+    find(val){
+        let current = this.root;
+        while(current){
+            if(val == current.value){
+                return true;
+            }
+            if(val < current.value){
+                current= current.left;
+            }
+            else if(val > current.value){
+                current = current.right;
+            }
+        }
+        return false;
+               
+    }
 }
 
 /************** Test *****************/
@@ -48,3 +65,5 @@ bst.insert(32);
 bst.insert(22);
 bst.insert(38);
 bst.insert(37);
+console.log(bst.find(22));
+console.log(bst.find(52));
