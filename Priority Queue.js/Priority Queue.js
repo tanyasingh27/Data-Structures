@@ -1,4 +1,10 @@
-// git commit 18 days ago
+// git commit 17 days ago
+class Node{ 
+    constructor(){
+        this.val = null;
+        this.priority = null;
+    }
+}
 
 class PriorityQueue {
     constructor(){
