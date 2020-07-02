@@ -1,17 +1,10 @@
-// git commit 17 days ago
-class Node{ 
-    constructor(){
-        this.val = null;
-        this.priority = null;
-    }
-}
-
 class PriorityQueue {
     constructor(){
         this.values = [];
     }
-    insert(element){
-        this.values.push(element);
+    EnQueue(val,priority){
+        let newNode = new Node(val,priority);
+        this.values.push(newNode);
         this.bubbleUp();
     }
     bubbleUp(){
@@ -20,21 +13,21 @@ class PriorityQueue {
         while(index > 0){
             let parentIndex = Math.floor((index-1)/2);
             let parent = this.values[parentIndex];
-            if(element <= parent) break;
+            if(element.priority >= parent.priority) break;
             this.values[parentIndex] = element;
             this.values[index] = parent;
             index = parentIndex;            
         }
     }
 
-    extractMax(){
-        const max = this.values[0];
+    DeQueue(){
+        const min = this.values[0];
         const end = this.values.pop();
         if(this.values.length > 0){
             this.values[0] = end;
             this.sinkDown();
         }
-        return max;
+        return min;
     }
     sinkDown(){
         let index = 0;
@@ -46,15 +39,15 @@ class PriorityQueue {
             let leftChild, rightChild, swap = null;
             if(leftChildIndex < length){
                 leftChild = this.values[leftChildIndex];
-                if(leftChild > element){
+                if(leftChild.priority < element.priority){
                     swap = leftChildIndex;
                 }                
             }
             if(rightChildIndex < length){
                 rightChild = this.values[rightChildIndex];
                 if(
-                    (swap === null && rightChild > element)|| 
-                    (swap !== null && rightChild > leftChild)
+                    (swap === null && rightChild.priority < element.priority)|| 
+                    (swap !== null && rightChild.priority < leftChild.priority)
                 ){
                     swap = rightChildIndex;
                 }                
@@ -67,22 +60,26 @@ class PriorityQueue {
         }
     }
 }
+class Node{ 
+    constructor(val, priority){
+        this.value = val;
+        this.priority = priority;
+    }
+}
 
 let pQueue = new PriorityQueue();
-pQueue.insert(41);
-pQueue.insert(39);
-pQueue.insert(33);
-pQueue.insert(18);
-pQueue.insert(27);
-pQueue.insert(12);
+pQueue.EnQueue("Get Up",1);
+pQueue.EnQueue("Brush", 3);
+pQueue.EnQueue("Breakfast", 5);
+pQueue.EnQueue("Dinner",6);
+pQueue.EnQueue("Lunch",2);
+pQueue.EnQueue("Learn a new skill",4);
 console.log(pQueue);
-pQueue.insert(55);
-console.log(pQueue);
-pQueue.extractMax();
-pQueue.extractMax();
-pQueue.extractMax();
-pQueue.extractMax();
-pQueue.extractMax();
-pQueue.extractMax();
-pQueue.extractMax();
+pQueue.DeQueue();
+pQueue.DeQueue();
+pQueue.DeQueue();
+pQueue.DeQueue();
+pQueue.DeQueue();
+pQueue.DeQueue();
+pQueue.DeQueue();
 console.log(pQueue);
