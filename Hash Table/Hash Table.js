@@ -14,6 +14,7 @@ class HashTable {
         return total;
     }
 
+    // set (key, value) pairs
     set(key, value){
         let idx  = this._hash(key);
         if(!this.keysMap[idx]){
@@ -22,6 +23,7 @@ class HashTable {
         this.keysMap[idx].push([key,value]);
     }
 
+    // get value by key
     get(key){
         let idx = this._hash(key);
         if(this.keyMap[idx]){
@@ -32,6 +34,26 @@ class HashTable {
             }
         }
         return undefined;
+    }
+
+    //get all the keys from Hash Table
+    keys(){
+
+    }
+
+    //get all the values from Hash Table
+    values(){
+        let valuesArr = [];
+        for(let i=0; i< this.keysMap.length; i++){
+            if(this.keysMap[i]){
+                for(let j=0; j< this.keysMap[i].length; j++){
+                    if(!valuesArr.includes(this.keysMap[i][j][1])){
+                        valuesArr.push(this.keysMap[i][j][1]);
+                    }
+                }
+            }
+        }
+        return valuesArr;
     }
 
 }
