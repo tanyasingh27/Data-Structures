@@ -38,7 +38,17 @@ class HashTable {
 
     //get all the keys from Hash Table
     keys(){
-
+        let keysArr = [];
+        for(let i=0; i< this.keysMap.length; i++){
+            if(this.keysMap[i]){
+                for(let j=0; j< this.keysMap[i].length; j++){
+                    if(!keysArr.includes(this.keysMap[i][j][0])){
+                        keysArr.push(this.keysMap[i][j][0]);
+                    }
+                }
+            }
+        }
+        return keysArr;
     }
 
     //get all the values from Hash Table
@@ -57,3 +67,14 @@ class HashTable {
     }
 
 }
+
+let HT = new HashTable();
+HT("INDIANRED","#CD5C5C");
+HT("LIGHTCORAL","#F08080");
+HT("SALMON","#FA8072");
+HT("YELLOW","#FFFF00");
+HT("TOMATO","#FF6347");
+HT("OLIVE","#808000");
+HT("LIGHTSEAGREEN","#20B2AA");
+console.log(HT);
+HT("PINK","#FFC0CB");
