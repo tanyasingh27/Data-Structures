@@ -7,9 +7,10 @@ class HashTable {
     _hash(key){
         let total = 0;
         let randomPrime = 31;
-        for(let i=0; i< Math.min(this.keysMap.length, 100); i++){
+        for(let i=0; i< Math.min(key.length, 100); i++){
+            let char = key[i];
             let val = char.charCodeAt(0) -96;
-            total = (total * randomPrime + val % this.keysMap.length);
+            total = (total * randomPrime + val) % this.keysMap.length;
         }
         return total;
     }
@@ -68,13 +69,12 @@ class HashTable {
 
 }
 
-let HT = new HashTable();
-HT("INDIANRED","#CD5C5C");
-HT("LIGHTCORAL","#F08080");
-HT("SALMON","#FA8072");
-HT("YELLOW","#FFFF00");
-HT("TOMATO","#FF6347");
-HT("OLIVE","#808000");
-HT("LIGHTSEAGREEN","#20B2AA");
+HT.set("INDIANRED","#CD5C5C");
+HT.set("LIGHTCORAL","#F08080");
+HT.set("SALMON","#FA8072");
+HT.set("YELLOW","#FFFF00");
+HT.set("TOMATO","#FF6347");
+HT.set("OLIVE","#808000");
+HT.set("CYAN","#20B2AA");
 console.log(HT);
-HT("PINK","#FFC0CB");
+HT.set("PINK","#FFC0CB");
