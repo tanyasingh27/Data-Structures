@@ -27,7 +27,7 @@ class HashTable {
     // get value by key
     get(key){
         let idx = this._hash(key);
-        if(this.keyMap[idx]){
+        if(this.keysMap[idx]){
             for(let i=0; i<this.keysMap[idx].length; i++){
                 if(this.keysMap[idx][i][0] === key){
                     return this.keysMap[idx][i][1];
@@ -69,12 +69,13 @@ class HashTable {
 
 }
 
-HT.set("INDIANRED","#CD5C5C");
-HT.set("LIGHTCORAL","#F08080");
-HT.set("SALMON","#FA8072");
-HT.set("YELLOW","#FFFF00");
-HT.set("TOMATO","#FF6347");
-HT.set("OLIVE","#808000");
-HT.set("CYAN","#20B2AA");
+let HT = new HashTable(17);
+HT.set("indianred","#CD5C5C");
+HT.set("lightcoral","#F08080");
+HT.set("salmon","#FA8072");
+HT.set("yellow","#FFFF00");
+HT.set("tomato","#FF6347");
+HT.set("olive","#808000");
+HT.set("cyan","#20B2AA");
 console.log(HT);
-HT.set("PINK","#FFC0CB");
+HT.set("pink","#FFC0CB");
